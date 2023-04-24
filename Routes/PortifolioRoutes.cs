@@ -5,7 +5,7 @@ namespace BumaAPI.Routes;
 
 public static class PortifolioRoutes
 {
-    static string modelName = "Portifolio"; 
+    static string modelName = "Portifolio";
     static string path = "/portifolios";
     public static void MapPortifolioRoutes(this WebApplication app)
     {
@@ -27,7 +27,7 @@ public static class PortifolioRoutes
 
         app.MapPost(path, async (PortifolioItem model, DataBaseContext db) =>
         {
-            if (model is null) return Results.BadRequest();
+            if (model is null ) return Results.BadRequest();
             db.PortifolioItems.Add(model);
             await db.SaveChangesAsync();
             return Results.Created($"{path}/{model.Id}", model);
@@ -57,9 +57,9 @@ public static class PortifolioRoutes
 
             if (modelEdit is null) return Results.NotFound();
 
-            modelEdit.Image=model.Image;
-            modelEdit.Url=model.Url;
-            modelEdit.UrlGitHub=model.UrlGitHub;
+            modelEdit.Image = model.Image;
+            modelEdit.Url = model.Url;
+            modelEdit.UrlGitHub = model.UrlGitHub;
 
             await db.SaveChangesAsync();
             return Results.Ok(modelEdit);

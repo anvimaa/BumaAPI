@@ -20,6 +20,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.MapGet("/", () => app.Environment.ContentRootPath+ "\\Files\\Portifolio\\");
 app.MapAllRoute();
 
 app.UseHttpsRedirection();
